@@ -38,6 +38,6 @@ jobs:
 
       - name: Deploy to Clojars
         env:
-          CLOJARS_USERNAME: jamesaorson
+          CLOJARS_USERNAME: exokomodo
           CLOJARS_DEPLOY_TOKEN: ${{ secrets.CLOJARS_DEPLOY_TOKEN }}
         run: lein deploy clojars
