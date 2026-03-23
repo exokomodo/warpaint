@@ -20,12 +20,10 @@ jobs:
           distribution: temurin
           java-version: "21"
 
-      - name: Install Leiningen
-        uses: DeLaGuardo/setup-clojure@13
-        with:
-          lein: latest
+      - name: Set up Leiningen
+        uses: ./.github/actions/setup-lein
 
-      - name: Cache Maven / Lein deps
+      - name: Cache Maven deps
         uses: actions/cache@v4
         with:
           path: ~/.m2/repository
