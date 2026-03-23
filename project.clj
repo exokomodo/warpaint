@@ -24,5 +24,7 @@
   {:dev {:plugins [[lein-cljfmt "0.9.2"]]
          :dependencies [[org.slf4j/slf4j-simple "2.0.9"]]}}
 
-  :deploy-repositories [["clojars" {:url "https://clojars.org/repo"
+  :deploy-repositories [["clojars" {:url      "https://clojars.org/repo"
+                                     :username :env/clojars_username
+                                     :password :env/clojars_deploy_token
                                      :sign-releases false}]])

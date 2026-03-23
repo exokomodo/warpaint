@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    name: Deploy to Clojars
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Install Leiningen
+        uses: DeLaGuardo/setup-clojure@12
+        with:
+          lein: latest
+
+      - name: Cache Maven / Lein deps
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('project.clj') }}
+          restore-keys: ${{ runner.os }}-maven-
+
+      - name: Set version from tag
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          sed -i "s/defproject io.github.exokomodo\/warpaint \"[^\"]*\"/defproject io.github.exokomodo\/warpaint \"$VERSION\"/" project.clj
+          echo "Releasing version: $VERSION"
+          head -2 project.clj
+
+      - name: Deploy to Clojars
+        env:
+          CLOJARS_USERNAME: exokomodo
+          CLOJARS_DEPLOY_TOKEN: ${{ secrets.CLOJARS_DEPLOY_TOKEN }}
+        run: lein deploy clojars
