@@ -4,18 +4,18 @@ A Clojure DSL for writing GLSL 450 shaders as s-expressions, with in-process SPI
 
 Write your shaders in Clojure. Get SPIR-V out.
 
-[![Clojars Project](https://img.shields.io/clojars/v/io.github.exokomodo/warpaint.svg)](https://clojars.org/io.github.exokomodo/warpaint)
+[![Clojars Project](https://img.shields.io/clojars/v/com.exokomodo/warpaint.svg)](https://clojars.org/com.exokomodo/warpaint)
 
 ## Installation
 
 ```clojure
 ;; project.clj
-[io.github.exokomodo/warpaint "0.1.0"]
+[com.exokomodo/warpaint "0.1.0"]
 ```
 
 ```clojure
 ;; deps.edn
-io.github.exokomodo/warpaint {:mvn/version "0.1.0"}
+com.exokomodo/warpaint {:mvn/version "0.1.0"}
 ```
 
 ## Quick Start

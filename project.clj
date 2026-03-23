@@ -1,4 +1,4 @@
-(defproject io.github.exokomodo/warpaint "0.1.0"
+(defproject com.exokomodo/warpaint "0.1.0"
   :description "S-expression shader DSL for Clojure — emit GLSL 450, compile to SPIR-V"
   :url "https://github.com/exokomodo/warpaint"
   :license {:name "CC0 1.0 Universal"
