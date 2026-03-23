@@ -34,12 +34,12 @@ jobs:
       - name: Set version from tag
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
-          sed -i "s/defproject io.github.exokomodo\/warpaint \"[^\"]*\"/defproject io.github.exokomodo\/warpaint \"$VERSION\"/" project.clj
+          sed -i "s/defproject com.exokomodo\/warpaint \"[^\"]*\"/defproject com.exokomodo\/warpaint \"$VERSION\"/" project.clj
           echo "Releasing version: $VERSION"
           head -2 project.clj
 
       - name: Deploy to Clojars
         env:
-          CLOJARS_USERNAME: exokomodo
+          CLOJARS_USERNAME: jamesaorson
           CLOJARS_DEPLOY_TOKEN: ${{ secrets.CLOJARS_DEPLOY_TOKEN }}
         run: lein deploy clojars
